@@ -1,0 +1,22 @@
+<% if tranzactions.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Amount</th>
+        <th>Timestamp</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% tranzactions.reverse.each do |trx| %>
+        <tr>
+          <td><%= trx.id %></td>
+          <td><%= trx.amount %></td>
+          <td><%= trx.created_at %></td>
+          <td><%= distance_of_time_in_words_to_now(trx.created_at) %> ago</td>
+        </tr>
+      <% end %>
+    </tbody§>
+<% end %>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CsrfShirofukurouCh</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1><i class="fa fa-money" aria-hidden="true"></i> CSRF Bank</i></h1>
+      <%= yield %>
+    </div>
+  </body>
+</html>

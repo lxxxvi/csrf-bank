@@ -1,0 +1,23 @@
+<h2>Hello Client <small><%= link_to 'Logout', logout_path, class: 'btn btn-xs btn-default' %></small></h2>
+
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-xs-12">
+       <span class="text-muted">Your balance</span>
+    </div>
+    <div class="col-xs-12">
+      <h2><%= display_balance(@user) %></h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to 'New transaction', new_user_tranzaction_path(@user), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>
+
+<% if @user.tranzactions.any? %>
+  <p>Your transaction history</p>
+  <%= render 'tranzactions/index', tranzactions: @user.tranzactions %>
+<% end %>
