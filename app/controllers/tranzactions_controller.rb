@@ -1,5 +1,8 @@
 class TranzactionsController < ApplicationController
 
+  skip_before_action :authenticate_user, only: [:create]
+
+
   def new
     @tranzaction = find_user.tranzactions.new
   end
