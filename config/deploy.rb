@@ -1,8 +1,16 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'csrf-bank'
+set :repo_url, 'git@github.com:lxxxvi/csrf-bank.git'
+set :rvm_ruby_version, File.read(".ruby-version").strip
+
+set :deploy_to, "/var/www/csrf.shirofukurou.ch"
+
+set :ssh_options, {
+  user: "mario",
+  forward_agent: true,
+}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -34,15 +42,8 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
+set :linked_dirs, %w{log tmp public/system public/assets}
+set :linked_files, %w{config/database.yml config/secrets.yml db/production.sqlite3}
 
-end
+set :keep_releases, 5
